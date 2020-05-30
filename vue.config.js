@@ -1,9 +1,9 @@
 module.exports = {
   // build时构建文件的目录 构建时传入 --no-clean 可关闭该行为
   outputDir: './docs',
-
-  // build时放置生成的静态资源 (js、css、img、fonts) 的 (相对于 outputDir 的) 目录
-  assetsDir: '',
+  assetsDir: 'static', // 输出的资源，所在的文件夹
+  publicPath: './',
+  indexPath: 'index.html',
   // eslint-loader 是否在保存的时候检查
   lintOnSave: true,
   // webpack配置
