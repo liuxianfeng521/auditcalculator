@@ -1,39 +1,44 @@
 
 /*
-* value:档次 (万元)
+* level:档次 (万元)
 ** percent:百分比
 * */
 
 // 审计档次公式
 const auditFormula = [{
-  value: 100,
+  level: 100,
   percent: 0.015
 }]
 // 验资档次公式
 const capitalFormula = [{
-  value: 100,
+  level: 100,
   base: 0,
   percent: 0.015 // 千分之15
 }, {
-  value: 1000,
+  level: 1000,
   base: 0,
   percent: 0.00625
 }, {
-  value: 5000,
+  level: 5000,
   base: 0,
   percent: 0.00625
 }, {
-  value: 10000,
+  level: 10000,
   base: 0,
   percent: 0.00625
 }, {
-  value: 100000,
+  level: 100000,
   base: 0,
   percent: 0.00625
 }]
 // 评估档次公式
 const assessmentFormula = [{
-  value: 100,
+  level: 100,
+  base: 0,
+  percent: 0.015
+},
+{
+  level: 1000,
   base: 0,
   percent: 0.015
 }]

@@ -45,7 +45,7 @@ export default {
     cal () {
       console.log('formula', formula)
       formula.assessmentFormula.forEach((item) => {
-        if (this.sizeForm.basePrices <= item.value * 10000) {
+        if (this.sizeForm.basePrices <= item.level * 10000) {
           this.sizeForm.assessmentPrices = this.sizeForm.basePrices * item.percent
         }
       })
