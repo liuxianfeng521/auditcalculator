@@ -22,7 +22,7 @@ const routes = [
 ]
 
 const router = new VueRouter({
-  mode: 'history',
+  mode: 'hash', // history 打包部署不显示
   base: process.env.BASE_URL,
   routes
 })

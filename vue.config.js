@@ -1,60 +1,11 @@
 module.exports = {
-  // build时构建文件的目录 构建时传入 --no-clean 可关闭该行为
-  outputDir: './docs',
-  assetsDir: 'static', // 输出的资源，所在的文件夹
+  // 公共路径(必须有的)
   publicPath: './',
-  indexPath: 'index.html',
-  // eslint-loader 是否在保存的时候检查
-  lintOnSave: true,
-  // webpack配置
-  // see https://github.com/vuejs/vue-cli/blob/dev/docs/webpack.md
-  chainWebpack: () => {},
-  configureWebpack: () => {},
-  // vue-loader 配置项
-  // https://vue-loader.vuejs.org/en/options.html
-  // vueLoader: {},
-  // 生产环境是否生成 sourceMap 文件
-  productionSourceMap: true,
-  // css相关配置
-  /* css: {
-    // 是否使用css分离插件 ExtractTextPlugin
-    extract: true,
-    // 开启 CSS source maps?
-    sourceMap: false,
-    // css预设器配置项
-    loaderOptions: {},
-    // 启用 CSS modules for all css / pre-processor files.
-    modules: false
-  }, */
-  // use thread-loader for babel & TS in production build
-  // enabled by default if the machine has more than 1 cores
-  parallel: require('os').cpus().length > 1,
-  // 是否启用dll
-  // See https://github.com/vuejs/vue-cli/blob/dev/docs/cli-service.md#dll-mode
-  // dll: false,
-  // PWA 插件相关配置
-  // see vuejs/vue-cli
-  pwa: {},
-  // webpack-dev-server 相关配置
-  devServer: {
-    /* open: process.platform === 'darwin',
-    host: '0.0.0.0',
-    port: 8080,
-    https: false,
-    hotOnly: false, */
-    /* proxy: {
-      '/gxyundata': {
-        target: 'http://localhost:3000/',
-        changeOrigin: true,
-        pathRewrite: {
-          '^/gxyundata': '/gxyundata'
-        }
-      }
-    } */// 设置代理
-    // before: app => {}
-  },
-  // 第三方插件配置
-  pluginOptions: {
-    // ...
-  }
+  // 输出文件目录
+  outputDir: 'docs',
+  // 静态资源存放的文件夹(相对于ouputDir)
+  assetsDir: 'assets',
+  // eslint-loader 是否在保存的时候检查(果断不用，这玩意儿我都没装)
+  lintOnSave: false,
+  productionSourceMap: true // 不需要生产环境的设置false可以减小dist文件大小，加速构建
 }
