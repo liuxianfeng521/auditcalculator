@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "precache-manifest.4f3989c63cd843de71716d54dbf70df9.js"
+  "precache-manifest.35fb3a1e39424edde79ea9a98306c80f.js"
 );
 
 workbox.core.setCacheNameDetails({prefix: "auditcalculator"});
