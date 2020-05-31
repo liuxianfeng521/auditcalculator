@@ -2,11 +2,12 @@
   <div>
     <el-form ref="form" :model="sizeForm" size="mini"
              @submit.native.prevent>
-      <el-form-item label="请输入收费计费技术（单位：元）">
-        <el-input type="number"
-                  v-model.number="sizeForm.basePrices"
-                  placeholder="请输入内容"
-                  @keyup.enter.native="cal">
+      <el-form-item label="请输入收费计费基础（单位：元）">
+        <el-input
+          type="nubmer"
+          v-model="sizeForm.basePrices"
+          placeholder="请输入内容"
+          @keyup.enter.native="cal">
           <el-button slot="append" icon="el-icon-search"
                      @click.native="cal"></el-button>
         </el-input>
@@ -43,12 +44,27 @@ export default {
   },
   methods: {
     cal () {
-      console.log('formula', formula)
-      formula.assessmentFormula.forEach((item) => {
-        if (this.sizeForm.basePrices <= item.level * 10000) {
-          this.sizeForm.assessmentPrices = this.sizeForm.basePrices * item.percent
-        }
-      })
+      console.log('formula', formula, this.sizeForm)
+      const reg = /^\d+(\.\d+)?$/
+      if (reg.test(this.sizeForm.basePrices)) {
+        formula.assessmentFormula.forEach((item) => {
+          if (this.sizeForm.basePrices === 0) {
+            this.sizeForm.assessmentPrices = 0
+          }
+          if (item.max && this.sizeForm.basePrices <= item.max * 10000 && this.sizeForm.basePrices > item.min * 10000) {
+            this.sizeForm.assessmentPrices = this.sizeForm.basePrices * item.percent / 1000
+          }
+          if (!item.max && this.sizeForm.basePrices > item.min * 10000) {
+            this.sizeForm.assessmentPrices = this.sizeForm.basePrices * item.percent / 1000
+          }
+        })
+      } else {
+        this.$message({
+          title: '错误',
+          message: '请输入一个数字',
+          type: 'error'
+        })
+      }
     }
   }
 }

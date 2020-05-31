@@ -2,7 +2,7 @@
   <div id="app">
     <div id="nav">
       <router-link to="/">审计计算</router-link> |
-      <router-link to="/formula">修改公式</router-link>
+      <router-link to="/formula">计算公式</router-link>
     </div>
     <router-view/>
   </div>

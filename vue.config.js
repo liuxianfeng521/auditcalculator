@@ -7,5 +7,13 @@ module.exports = {
   assetsDir: 'assets',
   // eslint-loader 是否在保存的时候检查(果断不用，这玩意儿我都没装)
   lintOnSave: false,
-  productionSourceMap: true // 不需要生产环境的设置false可以减小dist文件大小，加速构建
+  productionSourceMap: true, // 不需要生产环境的设置false可以减小dist文件大小，加速构建
+  chainWebpack: config => {
+    config
+      .plugin('html')
+      .tap(args => {
+        args[0].title = '审计计算器'
+        return args
+      })
+  }
 }
