@@ -47,17 +47,7 @@ export default {
       console.log('formula', formula, this.sizeForm)
       const reg = /^\d+(\.\d+)?$/
       if (reg.test(this.sizeForm.basePrices)) {
-        formula.assessmentFormula.forEach((item) => {
-          if (this.sizeForm.basePrices === 0) {
-            this.sizeForm.assessmentPrices = 0
-          }
-          if (item.max && this.sizeForm.basePrices <= item.max * 10000 && this.sizeForm.basePrices > item.min * 10000) {
-            this.sizeForm.assessmentPrices = this.sizeForm.basePrices * item.percent / 1000
-          }
-          if (!item.max && this.sizeForm.basePrices > item.min * 10000) {
-            this.sizeForm.assessmentPrices = this.sizeForm.basePrices * item.percent / 1000
-          }
-        })
+        this.sizeForm.assessmentPrices = this.stepAlgorithm(Number(this.sizeForm.basePrices), formula.assessmentFormula)
       } else {
         this.$message({
           title: '错误',
@@ -65,6 +55,63 @@ export default {
           type: 'error'
         })
       }
+    },
+    stepAlgorithm (value, arr) {
+      let result = null
+      arr.forEach((item, index) => {
+        if (value === 0) {
+          result = 0
+        }
+        if (index === 0 && value <= item.max * 10000 && value > item.min * 10000) {
+          result = value * item.percent / 1000
+        }
+        if (index === 1 && value <= item.max * 10000 && value > item.min * 10000) {
+          result = arr[0].max * 10000 * arr[0].percent / 1000 + (value - arr[0].max * 10000) * item.percent / 1000
+        }
+        if (index === 2 && value <= item.max * 10000 && value > item.min * 10000) {
+          result = (arr[0].max * 10000 * arr[0].percent / 1000) +
+              (arr[1].max * 10000 * arr[1].percent / 1000) +
+              (value - (arr[0].max - arr[1].max) * 10000) * item.percent / 1000
+        }
+        if (index === 3 && value <= item.max * 10000 && value > item.min * 10000) {
+          result = (arr[0].max * 10000 * arr[0].percent / 1000) +
+              (arr[1].max * 10000 * arr[1].percent / 1000) +
+              (arr[2].max * 10000 * arr[2].percent / 1000) +
+              (value - (arr[0].max - arr[1].max - arr[2].max) * 10000) * item.percent / 1000
+        }
+        if (index === 4 && value <= item.max * 10000 && value > item.min * 10000) {
+          result = (arr[0].max * 10000 * arr[0].percent / 1000) +
+              (arr[1].max * 10000 * arr[1].percent / 1000) +
+              (arr[2].max * 10000 * arr[2].percent / 1000) +
+              (arr[3].max * 10000 * arr[3].percent / 1000) +
+              (value - (arr[0].max - arr[1].max - arr[2].max - arr[3].max) * 10000) * item.percent / 1000
+        }
+        if (index === 5 && value <= item.max * 10000 && value > item.min * 10000) {
+          result = (arr[0].max * 10000 * arr[0].percent / 1000) +
+              (arr[1].max * 10000 * arr[1].percent / 1000) +
+              (arr[2].max * 10000 * arr[2].percent / 1000) +
+              (arr[3].max * 10000 * arr[3].percent / 1000) +
+              (arr[4].max * 10000 * arr[4].percent / 1000) +
+              (value - (arr[0].max - arr[1].max - arr[2].max - arr[3].max - arr[4].max) * 10000) * item.percent / 1000
+        }
+      })
+      console.log('result', result)
+      return result
+    },
+    percentAlgorithm (value, arr) {
+      var result = null
+      arr.forEach((item) => {
+        if (value === 0) {
+          result = 0
+        }
+        if (item.max && value <= item.max * 10000 && value > item.min * 10000) {
+          result = value * item.percent / 1000
+        }
+        if (!item.max && value > item.min * 10000) {
+          result = value * item.percent / 1000
+        }
+      })
+      return result
     }
   }
 }
