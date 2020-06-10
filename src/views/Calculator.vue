@@ -63,36 +63,58 @@ export default {
           result = 0
         }
         if (index === 0 && value <= item.max * 10000 && value > item.min * 10000) {
+          console.log('0', value * item.percent / 1000)
           result = value * item.percent / 1000
         }
         if (index === 1 && value <= item.max * 10000 && value > item.min * 10000) {
-          result = arr[0].max * 10000 * arr[0].percent / 1000 + (value - arr[0].max * 10000) * item.percent / 1000
+          console.log('0', (arr[0].max - arr[0].min) * 10000 * arr[0].percent / 1000)
+          console.log('1', (value - arr[1].min * 10000) * item.percent / 1000)
+          result = (arr[0].max - arr[0].min) * 10000 * arr[0].percent / 1000 +
+            (value - arr[1].min * 10000) * item.percent / 1000
         }
         if (index === 2 && value <= item.max * 10000 && value > item.min * 10000) {
-          result = (arr[0].max * 10000 * arr[0].percent / 1000) +
-              (arr[1].max * 10000 * arr[1].percent / 1000) +
-              (value - (arr[0].max - arr[1].max) * 10000) * item.percent / 1000
+          console.log('0', ((arr[0].max - arr[0].min) * 10000 * arr[0].percent / 1000))
+          console.log('1', ((arr[1].max - arr[1].min) * 10000 * arr[1].percent / 1000))
+          console.log('2', (value - arr[2].min * 10000) * item.percent / 1000)
+          result = ((arr[0].max - arr[0].min) * 10000 * arr[0].percent / 1000) +
+              ((arr[1].max - arr[0].min) * 10000 * arr[1].percent / 1000) +
+              (value - arr[2].min * 10000) * item.percent / 1000
         }
         if (index === 3 && value <= item.max * 10000 && value > item.min * 10000) {
-          result = (arr[0].max * 10000 * arr[0].percent / 1000) +
-              (arr[1].max * 10000 * arr[1].percent / 1000) +
-              (arr[2].max * 10000 * arr[2].percent / 1000) +
-              (value - (arr[0].max - arr[1].max - arr[2].max) * 10000) * item.percent / 1000
+          console.log('0', ((arr[0].max - arr[0].min) * 10000 * arr[0].percent / 1000))
+          console.log('1', ((arr[1].max - arr[1].min) * 10000 * arr[1].percent / 1000))
+          console.log('2', ((arr[2].max - arr[2].min) * 10000 * arr[2].percent / 1000))
+          console.log('3', ((value - arr[3].min) * 10000) * item.percent / 1000)
+          result = ((arr[0].max - arr[0].min) * 10000 * arr[0].percent / 1000) +
+              ((arr[1].max - arr[1].min) * 10000 * arr[1].percent / 1000) +
+              ((arr[2].max - arr[2].min) * 10000 * arr[2].percent / 1000) +
+              (value - arr[3].min * 10000) * item.percent / 1000
         }
         if (index === 4 && value <= item.max * 10000 && value > item.min * 10000) {
-          result = (arr[0].max * 10000 * arr[0].percent / 1000) +
-              (arr[1].max * 10000 * arr[1].percent / 1000) +
-              (arr[2].max * 10000 * arr[2].percent / 1000) +
-              (arr[3].max * 10000 * arr[3].percent / 1000) +
-              (value - (arr[0].max - arr[1].max - arr[2].max - arr[3].max) * 10000) * item.percent / 1000
+          console.log('0', ((arr[0].max - arr[0].min) * 10000 * arr[0].percent / 1000))
+          console.log('1', ((arr[1].max - arr[1].min) * 10000 * arr[1].percent / 1000))
+          console.log('2', ((arr[2].max - arr[2].min) * 10000 * arr[2].percent / 1000))
+          console.log('3', ((arr[3].max - arr[3].min) * 10000 * arr[3].percent / 1000))
+          console.log('4', (value - arr[4].min * 10000) * item.percent / 1000)
+          result = ((arr[0].max - arr[0].min) * 10000 * arr[0].percent / 1000) +
+              ((arr[1].max - arr[1].min) * 10000 * arr[1].percent / 1000) +
+              ((arr[2].max - arr[2].min) * 10000 * arr[2].percent / 1000) +
+              ((arr[3].max - arr[3].min) * 10000 * arr[3].percent / 1000) +
+              (value - arr[4].min * 10000) * item.percent / 1000
         }
         if (index === 5 && value <= item.max * 10000 && value > item.min * 10000) {
-          result = (arr[0].max * 10000 * arr[0].percent / 1000) +
-              (arr[1].max * 10000 * arr[1].percent / 1000) +
-              (arr[2].max * 10000 * arr[2].percent / 1000) +
-              (arr[3].max * 10000 * arr[3].percent / 1000) +
-              (arr[4].max * 10000 * arr[4].percent / 1000) +
-              (value - (arr[0].max - arr[1].max - arr[2].max - arr[3].max - arr[4].max) * 10000) * item.percent / 1000
+          console.log('0', ((arr[0].max - arr[0].min) * 10000 * arr[0].percent / 1000))
+          console.log('1', ((arr[1].max - arr[1].min) * 10000 * arr[1].percent / 1000))
+          console.log('2', ((arr[2].max - arr[2].min) * 10000 * arr[2].percent / 1000))
+          console.log('3', ((arr[3].max - arr[3].min) * 10000 * arr[3].percent / 1000))
+          console.log('4', ((arr[4].max - arr[4].min) * 10000 * arr[4].percent / 1000))
+          console.log('5', (value - arr[5].min * 10000) * item.percent / 1000)
+          result = ((arr[0].max - arr[0].min) * 10000 * arr[0].percent / 1000) +
+              ((arr[1].max - arr[1].min) * 10000 * arr[1].percent / 1000) +
+              ((arr[2].max - arr[2].min) * 10000 * arr[2].percent / 1000) +
+              ((arr[3].max - arr[3].min) * 10000 * arr[3].percent / 1000) +
+              ((arr[4].max - arr[4].min) * 10000 * arr[4].percent / 1000) +
+              (value - arr[5].min * 10000) * item.percent / 1000
         }
       })
       console.log('result', result)
